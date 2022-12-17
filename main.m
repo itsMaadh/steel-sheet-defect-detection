@@ -9,10 +9,6 @@ grayscale_img = im2gray(original_img);
 % Create binary mask of image
 binary_masked_img = edge(grayscale_img,'sobel',(graythresh(grayscale_img)*.1));
 
-% Use Otsu's method to perform automatic thresholding
-% level = graythresh(binary_masked_img);
-% binarized_img = imbinarize(binary_masked_img, level);
-
 % Use morphological opening to remove small noise and smooth the image
 se90 = strel('line',3,90);
 se0 = strel('line',3,0);
@@ -31,8 +27,7 @@ smoothen_img = imerode(smoothen_img,se);
 smoothen_img = imerode(smoothen_img,se);
 opened_img = imopen(smoothen_img,strel('square', 1));
 
-% se = strel('disk', 1);
-% opened_img = imopen(no_border_img, se);
+% Use Canny edge detection to find the edges of the objects
 edges = edge(opened_img, 'Canny');
 
 % Use connected component analysis to identify the objects in the image
