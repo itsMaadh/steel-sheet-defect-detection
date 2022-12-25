@@ -1,5 +1,5 @@
 % Import the image of the steel plates
-original_img = imread('magnetic-tile-surface/MT_Blowhole/Imgs/exp1_num_3667.jpg');
+original_img = imread('path-to-image.jpg');
 subplot(1,2,1)
 imshow(original_img),title("Original Image");
 
